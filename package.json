@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/qdradford/supreme-get-all-products-lambda#readme",
   "dependencies": {
+    "async": "^2.6.1",
     "aws-sdk": "^2.373.0",
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",

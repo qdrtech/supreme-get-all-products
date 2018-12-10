@@ -22,7 +22,7 @@ SupremeProductApi.getItems = (category, callback) => {
 
             if (!err) {
                 if (err) {
-                    callback('No response from website');
+                    return callback(`Error: ${err}`);
                 } else {
                     var $ = cheerio.load(html);
                 }
@@ -30,9 +30,9 @@ SupremeProductApi.getItems = (category, callback) => {
                 var count = $('img').length;
 
                 if ($('.shop-closed').length > 0) {
-                    callback('Store Closed');
+                    return callback('Store Closed');
                 } else if (count === 0) {
-                    callback('Store Closed');
+                    return callback('Store Closed');
                 }
 
                 var parsedResults = [];
@@ -53,7 +53,7 @@ SupremeProductApi.getItems = (category, callback) => {
                     request(link, function (err, resp, html, rrr, body) {
 
                         if (err) {
-                            callback('No response from website');
+                            return callback(`Error Getting Product url:${link}  Error: ${err}`);
                         } else {
                             var $ = cheerio.load(html);
                         }
@@ -114,14 +114,14 @@ SupremeProductApi.getItems = (category, callback) => {
                         parsedResults.push(metadata);
 
                         if (!--count) {
-                            callback(null, parsedResults);
+                            return callback(null, parsedResults);
                         }
 
                     })
 
                 });
             } else {
-                callback('No response from website');
+                return callback(`Error Requesting Website:${url}, Error: ${err}`);
             }
         });
     });

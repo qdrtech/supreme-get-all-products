@@ -1,5 +1,11 @@
 const SupremeApi = require('./supreme-product.service');
 
-exports.handler = async (event, context, callback) => {
-    var it = await SupremeApi.getItems("all", callback);
+exports.handler = (event, context, callback) => {
+    SupremeApi.getItems("all", (err, data) => {
+        if (err) {
+            return callback(err, null)
+        } else {
+            return callback(null, data);
+        }
+    });
 }
