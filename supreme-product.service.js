@@ -1,11 +1,13 @@
 const request = require("request");
 const cheerio = require("cheerio");
+const Promise = require('promise');
 
 SupremeProductApi = {};
 
 SupremeProductApi.url = 'http://www.supremenewyork.com';
 
-SupremeProductApi.getItems = async (category, callback) => {
+SupremeProductApi.getItems = (category) => {
+    return new Promise((resolve, reject) => {
         let getURL = SupremeProductApi.url + '/shop/all/' + category;
         if (category.toLowerCase() === "all") getURL = SupremeProductApi.url + '/shop/all';
         else if (category.tolowerCase() === "new") getURL = SupremeProductApi.url + '/shop/new';
@@ -22,7 +24,7 @@ SupremeProductApi.getItems = async (category, callback) => {
 
                 if (!err) {
                     if (err) {
-                        callback('No response from website');
+                        reject('No response from website');
                     } else {
                         var $ = cheerio.load(html);
                     }
@@ -114,17 +116,19 @@ SupremeProductApi.getItems = async (category, callback) => {
                             parsedResults.push(metadata);
 
                             if (!--count) {
-                                callback(null, parsedResults);
+                                resolve(parsedResults);
                             }
 
                         })
 
                     });
                 } else {
-                    callback('No response from website', null);
+                    reject('No response from website');
                 }
             });
-        })
+        });
+    });
+
 }
 
 module.exports = SupremeProductApi;
