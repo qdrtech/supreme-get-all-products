@@ -1,0 +1,27 @@
+{
+  "name": "supreme-get-all-products-lambda",
+  "version": "1.0.0",
+  "description": "Lambda that gets all products from the supreme website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qdradford/supreme-get-all-products-lambda.git"
+  },
+  "keywords": [
+    "supreme",
+    "lambda",
+    "aws",
+    "aws-sdk",
+    "nodejs",
+    "javascript"
+  ],
+  "author": "qrxrk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/qdradford/supreme-get-all-products-lambda/issues"
+  },
+  "homepage": "https://github.com/qdradford/supreme-get-all-products-lambda#readme"
+}
