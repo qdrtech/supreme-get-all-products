@@ -4,7 +4,7 @@
   "description": "Lambda that gets all products from the supreme website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,13 @@
   "bugs": {
     "url": "https://github.com/qdradford/supreme-get-all-products-lambda/issues"
   },
-  "homepage": "https://github.com/qdradford/supreme-get-all-products-lambda#readme"
+  "homepage": "https://github.com/qdradford/supreme-get-all-products-lambda#readme",
+  "dependencies": {
+    "Promise": "^1.0.5",
+    "aws-sdk": "^2.373.0",
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "promise": "^8.0.2",
+    "request": "^2.88.0"
+  }
 }
